@@ -1,26 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Filter from '././components/filters'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  state = {
+    FilterForMinumum: '',
+    FilterForMaximum: '',
+    FilterForName: '',
+    Cart: []
+  }
+
+  onChangeFilterForMinimum = (event) => {
+    this.setState({ FilterForMinumum: event.target.value })
+  }
+
+  onChangeFilterForMaximum = (event) => {
+    this.setState({ FilterForMaximum: event.target.value })
+  }
+
+  onChangeFilterForName = (event) => {
+    this.setState({ FilterForName: event.target.value })
+  }
+
+  render() {
+
+    return (
+      <div className="App">
+        <Filter
+          FilterForMinumum={this.state.FilterForMinumum}
+          FilterForMaximum={this.state.FilterForMaximum}
+          FilterForName={this.state.FilterForName}
+          onChangeFilterForMinimum={this.onChangeFilterForMinimum}
+          onChangeFilterForMaximum={this.onChangeFilterForMaximum}
+          onChangeFilterForName={this.onChangeFilterForName} />
+      </div>
+    );
+
+  }
 }
 
 export default App;
