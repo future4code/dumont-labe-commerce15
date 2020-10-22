@@ -28,7 +28,7 @@ class ShopCart extends React.Component {
         <CartItemContainer>
 
         {this.props.productsCart.map((product) => {
-          return <ShopCartItem cartItem={product}/>
+          return <ShopCartItem cartItem={product} onRemoveProduct={this.props.onRemoveProduct}/>
         })}
 
         </CartItemContainer>

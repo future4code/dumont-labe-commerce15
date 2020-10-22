@@ -14,7 +14,7 @@ class ShopCartItem extends React.Component {
         <ItemContainer>
           <p>{this.props.cartItem.quantity}x</p>
           <p>{this.props.cartItem.name}</p>
-          <button>Remover</button>
+          <button onClick={() => this.props.onRemoveProduct(this.props.cartItem.id)}>Remover</button>
         </ItemContainer>
       );
     }

@@ -111,6 +111,20 @@ class App extends React.Component {
     }
   }
 
+  onRemoveProduct = (productId) => {
+    const newProductInCart = this.state.productsCart.map((product) => {
+      if (productId === product.id){
+        return {
+          ...product,
+          quantity: product.quantity - 1
+        }
+      }
+      return product
+    }).filter((product) => product.quantity > 0)
+
+    this.setState({productsCart: newProductInCart})
+  }
+
   render() {
 
     return (
@@ -131,7 +145,10 @@ class App extends React.Component {
           onAddProduct={this.onAddProduct}
         />
         <ShopCart
-        productsCart={this.state.productsCart} />
+        productsCart={this.state.productsCart}
+        onRemoveProduct={this.onRemoveProduct} 
+        />
+        
       </AppContainer>
     );
 
