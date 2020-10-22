@@ -1,73 +1,65 @@
 import React from 'react';
-<<<<<<< produtos-loja
+import Filter from '././components/filters'
 import styled from 'styled-components';
-import './App.css';
-import Produtos from './components/produtos/Produtos.js'
-import Interestelar from "./components/img/camisetas/interestelar.png";
-import Jurassic from "./components/img/camisetas/jurassic.png"
-import Aerolito from "./components/img/aerolitos/aerolitos.png"
+import Produtos from './components/produtos/Produtos.js';
+import ShopCart from './components/cartShopping.js'
+
 
 const AppContainer = styled.div`
     display: grid;
-    grid-template-columns: 1fr 3 fr 1 fr;
+    grid-template-columns: 1fr 3fr 1fr;
     gap: 10px;
+    padding: 15px;
+  
 `;
 
-// const Products = [
-//   {
-//     id: 1,  
-//     name: "Camiseta Interestelar",
-//     value: 69.9,
-//     image: { Interestelar}
-//   },
-
-//   {
-//     id: 2,
-//     name: "Camiseta Jurassic",
-//     value: 69.9,
-//     image: { Jurassic }
-    
-//   },
-
-//   {
-//     id: 3,
-//     name: "Aerolito do Chapolin",
-//     value: 10000.00,
-//     image: { Aerolito }
-//   },
-
-//   // {
-//   //   id: 4,
-//   //   name: "Pacote de Viagem para Marte",
-//   //   value: 69.9,
-//   //   image: 
-//   // },
-
-//   // {
-//   //   id: 5,
-//   //   name: "Produto 5",
-//   //   value: 69.9,
-//   //   image: ;
-    
-//   // },
-// ];
 
 
 
-function App() {
-    return (
-      <div>
-        <Produtos />
 
+const products = [
+  {
+    id: 1,
+    name: "Camiseta Interestelar",
+    value: 69.9,
+    photo: "https://picsum.photos/200/200?a=1",
+  },
 
-       
-    
-      </div>
-    );
-  }
+  {
+    id: 2,
+    name: "Camiseta Jurassic",
+    value: 69.9,
+    photo: "https://picsum.photos/200/200?a=2",
+  },
 
-=======
-import Filter from '././components/filters'
+  {
+    id: 3,
+    name: "Aerolito do Chapolin",
+    value: 10000.0,
+    photo: "https://picsum.photos/200/200?a=3",
+  },
+
+  {
+    id: 4,
+    name: "Pacote de Viagem para Marte",
+    value: 69.9,
+    photo: "https://picsum.photos/200/200?a=4",
+  },
+
+  {
+    id: 5,
+    name: "Roupa de Astronauta Infantil",
+    value: 69.9,
+    photo: "https://picsum.photos/200/200?a=5",
+  },
+
+  {
+    id: 6,
+    name: "Ônibus Espacial",
+    value: "A combinar",
+    photo: "https://picsum.photos/200/200?a=6",
+  },
+];
 
 class App extends React.Component {
 
@@ -93,7 +85,7 @@ class App extends React.Component {
   render() {
 
     return (
-      <div className="App">
+      <AppContainer>
         <Filter
           FilterForMinumum={this.state.FilterForMinumum}
           FilterForMaximum={this.state.FilterForMaximum}
@@ -101,11 +93,12 @@ class App extends React.Component {
           onChangeFilterForMinimum={this.onChangeFilterForMinimum}
           onChangeFilterForMaximum={this.onChangeFilterForMaximum}
           onChangeFilterForName={this.onChangeFilterForName} />
-      </div>
+        <Produtos products={products} />
+        <ShopCart />
+      </AppContainer>
     );
 
   }
 }
->>>>>>> master
 
 export default App;

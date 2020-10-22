@@ -7,7 +7,6 @@ flex-direction: column;
 align-items: flex-start;
 border: 1px solid black;
 padding: 10px;
-width: 15vw;
 height: 80vh;
 `
 

@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import Interestelar from "../img/camisetas/interestelar.png";
-import Jurassic from "../img/camisetas/jurassic.png";
+
+
 
 const CardContainer = styled.div`
   border: 2px solid magenta;
   display: flex;
   flex-direction: column;
+  
   
 `;
 
@@ -16,7 +17,7 @@ const CardInfo = styled.div`
   padding: 15px;
 
 p {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
 `;
@@ -27,18 +28,25 @@ const BotaoCarrinho = styled.button`
 
 `;
 
+// const Imagem = styled.img`
+//     width: 5px;
+//     height: 5px;
+
+// `;
+
+
 class CardDeProdutos extends React.Component {
 
   render() {
+    const product = this.props.product
     return (
       <CardContainer>
         <div>
-          Card de Produtos
-          <img src={Interestelar} />
+          <img src={product.photo} />
           <CardInfo>
-            <p> Produto </p> 
-            <p> R$ 69.90 </p>
-            <CardDeProdutos> Adicionar ao Carrinho</CardDeProdutos>
+            <p> {product.name} </p> 
+            <p> {product.value} </p>
+            <BotaoCarrinho> Adicionar ao Carrinho</BotaoCarrinho>
           </CardInfo>
           
         </div>
