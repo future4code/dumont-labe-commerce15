@@ -7,7 +7,7 @@ const CardContainer = styled.div`
   border: 2px solid magenta;
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  
   
 `;
 
@@ -17,7 +17,7 @@ const CardInfo = styled.div`
   padding: 15px;
 
 p {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
 `;
@@ -28,6 +28,13 @@ const BotaoCarrinho = styled.button`
 
 `;
 
+// const Imagem = styled.img`
+//     width: 5px;
+//     height: 5px;
+
+// `;
+
+
 class CardDeProdutos extends React.Component {
 
   render() {
@@ -35,7 +42,6 @@ class CardDeProdutos extends React.Component {
     return (
       <CardContainer>
         <div>
-          Card de Produtos
           <img src={product.photo} />
           <CardInfo>
             <p> {product.name} </p> 

@@ -2,61 +2,63 @@ import React from 'react';
 import Filter from '././components/filters'
 import styled from 'styled-components';
 import Produtos from './components/produtos/Produtos.js';
+import ShopCart from './components/cartShopping.js'
 
 
 const AppContainer = styled.div`
     display: grid;
-    grid-template-columns: 1fr 3 fr 1 fr;
+    grid-template-columns: 1fr 3fr 1fr;
     gap: 10px;
+    padding: 15px;
+  
 `;
+
+
+
+
 
 const products = [
   {
     id: 1,
     name: "Camiseta Interestelar",
     value: 69.9,
-    photo:
-      "https://pictures.bagy.app/pictures/store_1413/products/6f00bd0d-0345-46a1-89bb-1f10a38a5164.png",
+    photo: "https://picsum.photos/200/200?a=1",
   },
 
   {
     id: 2,
     name: "Camiseta Jurassic",
     value: 69.9,
-    photo:
-      "https://pictures.bagy.app/pictures/store_1413/products/45bc128d-dcc2-4cb2-a24e-358bb204eaf6.png",
+    photo: "https://picsum.photos/200/200?a=2",
   },
 
   {
     id: 3,
     name: "Aerolito do Chapolin",
     value: 10000.0,
-    photo:
-      "https://th.bing.com/th/id/OIP.Ut75TIokf0yMw4eCyuaUgAHaEK?w=315&h=180&c=7&o=5&pid=1.7",
+    photo: "https://picsum.photos/200/200?a=3",
   },
 
   {
     id: 4,
     name: "Pacote de Viagem para Marte",
     value: 69.9,
-    photo:
-      "https://th.bing.com/th/id/OIP.PXLndE0b8dr_cyZPgdQPYAHaIL?w=152&h=180&c=7&o=5&pid=1.7",
+    photo: "https://picsum.photos/200/200?a=4",
   },
 
   {
     id: 5,
     name: "Roupa de Astronauta Infantil",
     value: 69.9,
-    photo:
-      "http://blogdebrinquedo.com.br/wp-content/uploads/2009/05/mochila-astronauta-02.jpg",
+    photo: "https://picsum.photos/200/200?a=5",
   },
 
   {
     id: 6,
     name: "Ônibus Espacial",
     value: "A combinar",
-    photo: 'https://1.bp.blogspot.com/-mxZ5paFNc48/WJxZM9VikkI/AAAAAAAAN8U/8hQNVDzgxZ0Kg6KiirAv75yUZEfiPneJQCLcB/s1600/NASA%2BDISCOVERY.jpg'
-  }
+    photo: "https://picsum.photos/200/200?a=6",
+  },
 ];
 
 class App extends React.Component {
@@ -83,7 +85,7 @@ class App extends React.Component {
   render() {
 
     return (
-      <div className="App">
+      <AppContainer>
         <Filter
           FilterForMinumum={this.state.FilterForMinumum}
           FilterForMaximum={this.state.FilterForMaximum}
@@ -92,7 +94,8 @@ class App extends React.Component {
           onChangeFilterForMaximum={this.onChangeFilterForMaximum}
           onChangeFilterForName={this.onChangeFilterForName} />
         <Produtos products={products} />
-      </div>
+        <ShopCart />
+      </AppContainer>
     );
 
   }
