@@ -13,6 +13,10 @@ const AppContainer = styled.div`
   
 `;
 
+<<<<<<< final-loja
+=======
+
+>>>>>>> master
 const products = [
   {
     id: 1,
@@ -66,8 +70,13 @@ const products = [
 class App extends React.Component {
 
   state = {
+<<<<<<< final-loja
     FilterForMinumum: '',
     FilterForMaximum: '100000',
+=======
+    FilterForMinumum: '70',
+    FilterForMaximum: '5000',
+>>>>>>> master
     FilterForName: '',
     productsCart: []
   }
@@ -144,11 +153,16 @@ class App extends React.Component {
           FilterForName={this.state.FilterForName}
           onAddProduct={this.onAddProduct}
         />
+<<<<<<< final-loja
         <ShopCart
         productsCart={this.state.productsCart}
         onRemoveProduct={this.onRemoveProduct} 
         />
         
+=======
+        <ShopCart productsCart={this.state.productsCart}
+        />
+>>>>>>> master
       </AppContainer>
     );
 
