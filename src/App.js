@@ -13,10 +13,6 @@ const AppContainer = styled.div`
   
 `;
 
-<<<<<<< final-loja
-=======
-
->>>>>>> master
 const products = [
   {
     id: 1,
@@ -68,74 +64,107 @@ const products = [
 ];
 
 class App extends React.Component {
-
   state = {
-<<<<<<< final-loja
-    FilterForMinumum: '',
-    FilterForMaximum: '100000',
-=======
-    FilterForMinumum: '70',
-    FilterForMaximum: '5000',
->>>>>>> master
-    FilterForName: '',
-    productsCart: []
+    FilterForMinumum: "",
+    FilterForMaximum: "",
+    FilterForName: "",
+    productsCart: [],
+    listaDeProdutos: products,
+  };
+
+  componentDidUpdate(prevProps, prevState, snapshot){
+    if (
+      prevState.FilterForName !== this.state.FilterForName ||
+      prevState.FilterForMaximum !== this.state.FilterForMaximum ||
+      prevState.FilterForMinumum !== this.state.FilterForMinumum) {
+      this.getListaFiltrada();
+      console.log(this.state)
+    }
   }
 
 
   onChangeFilterForMinimum = (event) => {
-    this.setState({ FilterForMinumum: event.target.value })
-  }
+    this.setState({ FilterForMinumum: event.target.value });
+  };
 
   onChangeFilterForMaximum = (event) => {
-    this.setState({ FilterForMaximum: event.target.value })
-  }
+    this.setState({ FilterForMaximum: event.target.value });
+  };
 
   onChangeFilterForName = (event) => {
-    this.setState({ FilterForName: event.target.value })
-  }
+    this.setState({ FilterForName: event.target.value });
+  };
+
+  getListaFiltrada = () => {
+      const produtosFiltrados = products
+      .filter((product) => {
+        return product.name.includes(this.state.FilterForName);
+      })
+      .filter((product) => {
+        return product.value < Number(this.state.FilterForMaximum);
+      })
+      .filter((product) => {
+        return product.value > Number(this.state.FilterForMinumum);
+      });
+      
+      // .sort((a, b) => {
+      //   return this.state.sort === "crescente"
+      //     ? a.value - b.value
+      //     : b.value - a.value;
+      // });
+      
+    this.setState({ listaDeProdutos: produtosFiltrados });
+  };
 
   onAddProduct = (productId) => {
-    const productInCart = this.state.productsCart.find(product => productId === product.id)
+    const productInCart = this.state.productsCart.find(
+      (product) => productId === product.id
+    );
 
-    if(productInCart){
-
-      const newProductInCart = this.state.productsCart.map(product => {
-        if (productId === product.id){
+    if (productInCart) {
+      const newProductInCart = this.state.productsCart.map((product) => {
+        if (productId === product.id) {
           return {
             ...product,
-            quantity: product.quantity + 1
-          }
+            quantity: product.quantity + 1,
+          };
         }
 
-        return product
-      
-      })  
-        this.setState({productsCart: newProductInCart})
+        return product;
+      });
+      this.setState({ productsCart: newProductInCart });
     } else {
-      const addingProduct = products.find(product => productId === product.id)
+      const addingProduct = products.find(
+        (product) => productId === product.id
+      );
 
-      const newProductsInCart = [...this.state.productsCart, {...addingProduct, quantity: 1}]
+      const newProductsInCart = [
+        ...this.state.productsCart,
+        { ...addingProduct, quantity: 1 },
+      ];
 
-      this.setState({productsCart: newProductsInCart})
+      this.setState({ productsCart: newProductsInCart });
     }
-  }
+  };
 
   onRemoveProduct = (productId) => {
-    const newProductInCart = this.state.productsCart.map((product) => {
-      if (productId === product.id){
-        return {
-          ...product,
-          quantity: product.quantity - 1
+    const newProductInCart = this.state.productsCart
+      .map((product) => {
+        if (productId === product.id) {
+          return {
+            ...product,
+            quantity: product.quantity - 1,
+          };
         }
-      }
-      return product
-    }).filter((product) => product.quantity > 0)
+        return product;
+      })
+      .filter((product) => product.quantity > 0);
 
-    this.setState({productsCart: newProductInCart})
-  }
+    this.setState({ productsCart: newProductInCart });
+  };
 
+  
   render() {
-
     return (
       <AppContainer>
         <Filter
@@ -147,25 +176,19 @@ class App extends React.Component {
           onChangeFilterForName={this.onChangeFilterForName}
         />
         <Produtos
-          products={products}
+          products={this.state.listaDeProdutos}
+          atualizarProdutos={this.atualizaProdutos}
           FilterForMinumum={this.state.FilterForMinumum}
           FilterForMaximum={this.state.FilterForMaximum}
           FilterForName={this.state.FilterForName}
           onAddProduct={this.onAddProduct}
         />
-<<<<<<< final-loja
         <ShopCart
-        productsCart={this.state.productsCart}
-        onRemoveProduct={this.onRemoveProduct} 
+          productsCart={this.state.productsCart}
+          onRemoveProduct={this.onRemoveProduct}
         />
-        
-=======
-        <ShopCart productsCart={this.state.productsCart}
-        />
->>>>>>> master
       </AppContainer>
     );
-
   }
 }
 

@@ -7,8 +7,7 @@ const CardContainer = styled.div`
   border: 2px dotted magenta;
   display: flex;
   flex-direction: column;
-  
-  
+    
 `;
 
 const CardInfo = styled.div`
@@ -30,8 +29,6 @@ const BotaoCarrinho = styled.button`
     padding: 10px;
     text-align: center;
     color: white;
-    
-
 `;
 
 const Photos = styled.img`
