@@ -22,19 +22,9 @@ const ProdutosTabela = styled.div`
 
 class Produtos extends React.Component{
     state = {
-    sort: 'DECRESCENTE',
+    sort: 'crescente',
 
  } 
-
-  getListaFiltrada = () =>{
-    return this.props.products
-      .filter((product) => product.value <= this.props.FilterForMaximum)
-      .filter((product) => product.value >= this.props.FilterForMinumum)
-      .filter((product) => product.name.includes(this.props.FilterForName))
-      .sort((a, b) => this.state.sort === 'CRESCENTE' ? a.value - b.value : b.value - a.value)
-
-    
-  }
 
   onChangeOrdenar = (event) => {
     this.setState({sort: event.target.value})
@@ -42,21 +32,20 @@ class Produtos extends React.Component{
   }
 
     render(){
-      const listaFiltrada = this.getListaFiltrada()
         return (
         <ProdutosContainer>
             <ProdutosHeader>
-              <p> Quantidade de Produtos: {listaFiltrada.length} </p>
+              <p> Quantidade de Produtos: {this.props.products.length} </p>
               <label>
                 Ordenação:
                 <select value={this.state.sort} onChange={this.onChangeOrdenar}>
-                  <option value={'CRESCENTE'}>Crescente</option>
-                  <option value={'DECRESCENTE'}>Decrescente</option>
+                  <option value={'crescente'}>Crescente</option>
+                  <option value={'decrescente'}>Decrescente</option>
                 </select>
               </label>
             </ProdutosHeader>
             <ProdutosTabela>
-              {listaFiltrada.map((product) => {
+              {this.props.products.map((product) => {
                 return <CardDeProdutos product={product} onAddProduct={this.props.onAddProduct}/>;
 
               })}
