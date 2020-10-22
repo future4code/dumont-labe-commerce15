@@ -2,7 +2,7 @@ import React from 'react';
 import Filter from '././components/filters'
 import styled from 'styled-components';
 import Produtos from './components/produtos/Produtos.js';
-import ShopCart from './components/cartShopping.js'
+import ShopCart from './components/shoppingcart/cartShopping.js'
 
 
 const AppContainer = styled.div`
@@ -12,9 +12,6 @@ const AppContainer = styled.div`
     padding: 15px;
   
 `;
-
-
-
 
 
 const products = [
@@ -67,7 +64,22 @@ class App extends React.Component {
     FilterForMinumum: '',
     FilterForMaximum: '',
     FilterForName: '',
-    Cart: []
+    productsCart: [
+      {id: 5,
+      name: "Roupa de Astronauta Infantil",
+      value: 69.9,
+      photo: "https://picsum.photos/200/200?a=5",
+      quantity: 1
+    },
+
+      {
+        id: 4,
+        name: "Pacote de Viagem para Marte",
+        value: 69.9,
+        photo: "https://picsum.photos/200/200?a=4",
+        quantity: 2,
+      }
+    ]
   }
 
   onChangeFilterForMinimum = (event) => {
@@ -93,8 +105,10 @@ class App extends React.Component {
           onChangeFilterForMinimum={this.onChangeFilterForMinimum}
           onChangeFilterForMaximum={this.onChangeFilterForMaximum}
           onChangeFilterForName={this.onChangeFilterForName} />
-        <Produtos products={products} />
-        <ShopCart />
+        <Produtos products={products}
+         />
+        <ShopCart
+        productsCart={this.state.productsCart} />
       </AppContainer>
     );
 
