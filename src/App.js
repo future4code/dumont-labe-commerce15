@@ -1,5 +1,5 @@
 import React from 'react';
-<<<<<<< produtos-loja
+import Filter from '././components/filters'
 import styled from 'styled-components';
 import './App.css';
 import Produtos from './components/produtos/Produtos.js'
@@ -52,23 +52,6 @@ const AppContainer = styled.div`
 //   // },
 // ];
 
-
-
-function App() {
-    return (
-      <div>
-        <Produtos />
-
-
-       
-    
-      </div>
-    );
-  }
-
-=======
-import Filter from '././components/filters'
-
 class App extends React.Component {
 
   state = {
@@ -101,11 +84,11 @@ class App extends React.Component {
           onChangeFilterForMinimum={this.onChangeFilterForMinimum}
           onChangeFilterForMaximum={this.onChangeFilterForMaximum}
           onChangeFilterForName={this.onChangeFilterForName} />
+        <Produtos />
       </div>
     );
 
   }
 }
->>>>>>> master
 
 export default App;
