@@ -21,7 +21,7 @@ const ProdutosTabela = styled.div`
 
 class Produtos extends React.Component{
     state = {
-    sort: 'CRESCENTE',
+    sort: 'DECRESCENTE',
 
  } 
 
@@ -35,6 +35,11 @@ class Produtos extends React.Component{
     
   }
 
+  onChangeOrdenar = (event) => {
+    this.setState({sort: event.target.value})
+
+  }
+
     render(){
       const listaFiltrada = this.getListaFiltrada()
         return (
@@ -43,7 +48,7 @@ class Produtos extends React.Component{
               <p> Quantidade de Produtos: {listaFiltrada.length} </p>
               <label>
                 Ordenação:
-                <select value={this.state.sort}>
+                <select value={this.state.sort} onChange={this.onChangeOrdenar}>
                   <option value={'CRESCENTE'}>Crescente</option>
                   <option value={'DECRESCENTE'}>Decrescente</option>
                 </select>
