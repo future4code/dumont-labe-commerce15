@@ -20,21 +20,37 @@ const ProdutosTabela = styled.div`
 `
 
 class Produtos extends React.Component{
+    state = {
+    sort: 'CRESCENTE',
+
+ } 
+
+  getListaFiltrada = () =>{
+    return this.props.products
+      .filter((product) => product.value <= this.props.FilterForMaximum)
+      .filter((product) => product.value >= this.props.FilterForMinumum)
+      .filter((product) => product.name.includes(this.props.FilterForName))
+      .sort((a, b) => this.state.sort === 'CRESCENTE' ? a.value - b.value : b.value - a.value)
+
+    
+  }
+
     render(){
+      const listaFiltrada = this.getListaFiltrada()
         return (
         <ProdutosContainer>
             <ProdutosHeader>
-              <p> Quantidade de Produtos: 10</p>
+              <p> Quantidade de Produtos: {listaFiltrada.length} </p>
               <label>
                 Ordenação:
-                <select>
-                  <option>Crescente</option>
-                  <option>Decrescente</option>
+                <select value={this.state.sort}>
+                  <option value={'CRESCENTE'}>Crescente</option>
+                  <option value={'DECRESCENTE'}>Decrescente</option>
                 </select>
               </label>
             </ProdutosHeader>
             <ProdutosTabela>
-              {this.props.products.map((product) => {
+              {listaFiltrada.map((product) => {
                 return <CardDeProdutos product={product} />;
 
               })}

@@ -28,11 +28,12 @@ const BotaoCarrinho = styled.button`
 
 `;
 
-// const Imagem = styled.img`
-//     width: 5px;
-//     height: 5px;
-
-// `;
+const Photos = styled.img`
+  width: 200px;
+  height: 200px;
+  padding-left: 30px;
+  padding-top: 30px;
+`;
 
 
 class CardDeProdutos extends React.Component {
@@ -42,10 +43,10 @@ class CardDeProdutos extends React.Component {
     return (
       <CardContainer>
         <div>
-          <img src={product.photo} />
+          <Photos img src={product.photo} />
           <CardInfo>
             <p> {product.name} </p> 
-            <p> {product.value} </p>
+            <p> R$ {product.value} </p>
             <BotaoCarrinho> Adicionar ao Carrinho</BotaoCarrinho>
           </CardInfo>
           
