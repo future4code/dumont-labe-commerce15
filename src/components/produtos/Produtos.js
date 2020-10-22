@@ -51,7 +51,7 @@ class Produtos extends React.Component{
             </ProdutosHeader>
             <ProdutosTabela>
               {listaFiltrada.map((product) => {
-                return <CardDeProdutos product={product} />;
+                return <CardDeProdutos product={product} onAddProduct={this.props.onAddProduct}/>;
 
               })}
               

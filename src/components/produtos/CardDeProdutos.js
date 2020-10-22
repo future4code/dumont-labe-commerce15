@@ -47,7 +47,7 @@ class CardDeProdutos extends React.Component {
           <CardInfo>
             <p> {product.name} </p> 
             <p> R$ {product.value} </p>
-            <BotaoCarrinho> Adicionar ao Carrinho</BotaoCarrinho>
+            <BotaoCarrinho onClick={() => this.props.onAddProduct(product.id)}> Adicionar ao Carrinho</BotaoCarrinho>
           </CardInfo>
           
         </div>

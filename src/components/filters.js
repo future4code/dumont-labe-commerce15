@@ -27,7 +27,7 @@ class Filter extends React.Component {
                         onChange={this.props.onChangeFilterForMinimum} />
 
                     <label>Valor Máximo:</label>
-                    <input type="number" min="0"
+                    <input type="number"
                         value={this.props.FilterForMaximum}
                         onChange={this.props.onChangeFilterForMaximum}
                     />

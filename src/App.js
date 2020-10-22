@@ -13,10 +13,6 @@ const AppContainer = styled.div`
   
 `;
 
-<<<<<<< produtos-loja2
-=======
-
->>>>>>> master
 const products = [
   {
     id: 1,
@@ -73,23 +69,9 @@ class App extends React.Component {
     FilterForMinumum: '',
     FilterForMaximum: '',
     FilterForName: '',
-    productsCart: [
-      {id: 5,
-      name: "Roupa de Astronauta Infantil",
-      value: 69.9,
-      photo: "https://picsum.photos/200/200?a=5",
-      quantity: 1
-    },
-
-      {
-        id: 4,
-        name: "Pacote de Viagem para Marte",
-        value: 69.9,
-        photo: "https://picsum.photos/200/200?a=4",
-        quantity: 2,
-      }
-    ]
+    productsCart: []
   }
+
 
   onChangeFilterForMinimum = (event) => {
     this.setState({ FilterForMinumum: event.target.value })
@@ -103,6 +85,32 @@ class App extends React.Component {
     this.setState({ FilterForName: event.target.value })
   }
 
+  onAddProduct = (productId) => {
+    const productInCart = this.state.productsCart.find(product => productId === product.id)
+
+    if(productInCart){
+
+      const newProductInCart = this.state.productsCart.map(product => {
+        if (productId === product.id){
+          return {
+            ...product,
+            quantity: product.quantity + 1
+          }
+        }
+
+        return product
+      
+      })  
+        this.setState({productsCart: newProductInCart})
+    } else {
+      const addingProduct = products.find(product => productId === product.id)
+
+      const newProductsInCart = [...this.state.productsCart, {...addingProduct, quantity: 1}]
+
+      this.setState({productsCart: newProductsInCart})
+    }
+  }
+
   render() {
 
     return (
@@ -113,7 +121,6 @@ class App extends React.Component {
           FilterForName={this.state.FilterForName}
           onChangeFilterForMinimum={this.onChangeFilterForMinimum}
           onChangeFilterForMaximum={this.onChangeFilterForMaximum}
-<<<<<<< produtos-loja2
           onChangeFilterForName={this.onChangeFilterForName}
         />
         <Produtos
@@ -121,15 +128,10 @@ class App extends React.Component {
           FilterForMinumum={this.state.FilterForMinumum}
           FilterForMaximum={this.state.FilterForMaximum}
           FilterForName={this.state.FilterForName}
+          onAddProduct={this.onAddProduct}
         />
-        <ShopCart />
-=======
-          onChangeFilterForName={this.onChangeFilterForName} />
-        <Produtos products={products}
-         />
         <ShopCart
         productsCart={this.state.productsCart} />
->>>>>>> master
       </AppContainer>
     );
 
