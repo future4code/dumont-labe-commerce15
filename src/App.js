@@ -2,7 +2,7 @@ import React from 'react';
 import Filter from '././components/filters'
 import styled from 'styled-components';
 import Produtos from './components/produtos/Produtos.js';
-import ShopCart from './components/cartShopping.js'
+import ShopCart from './components/shoppingcart/cartShopping.js'
 
 
 const AppContainer = styled.div`
@@ -13,6 +13,10 @@ const AppContainer = styled.div`
   
 `;
 
+<<<<<<< produtos-loja2
+=======
+
+>>>>>>> master
 const products = [
   {
     id: 1,
@@ -69,7 +73,22 @@ class App extends React.Component {
     FilterForMinumum: '',
     FilterForMaximum: '',
     FilterForName: '',
-    Cart: []
+    productsCart: [
+      {id: 5,
+      name: "Roupa de Astronauta Infantil",
+      value: 69.9,
+      photo: "https://picsum.photos/200/200?a=5",
+      quantity: 1
+    },
+
+      {
+        id: 4,
+        name: "Pacote de Viagem para Marte",
+        value: 69.9,
+        photo: "https://picsum.photos/200/200?a=4",
+        quantity: 2,
+      }
+    ]
   }
 
   onChangeFilterForMinimum = (event) => {
@@ -94,6 +113,7 @@ class App extends React.Component {
           FilterForName={this.state.FilterForName}
           onChangeFilterForMinimum={this.onChangeFilterForMinimum}
           onChangeFilterForMaximum={this.onChangeFilterForMaximum}
+<<<<<<< produtos-loja2
           onChangeFilterForName={this.onChangeFilterForName}
         />
         <Produtos
@@ -103,6 +123,13 @@ class App extends React.Component {
           FilterForName={this.state.FilterForName}
         />
         <ShopCart />
+=======
+          onChangeFilterForName={this.onChangeFilterForName} />
+        <Produtos products={products}
+         />
+        <ShopCart
+        productsCart={this.state.productsCart} />
+>>>>>>> master
       </AppContainer>
     );
 

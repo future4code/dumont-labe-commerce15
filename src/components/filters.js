@@ -7,7 +7,7 @@ flex-direction: column;
 align-items: flex-start;
 border: 1px solid black;
 padding: 10px;
-height: 80vh;
+height: 110vh;
 `
 
 class Filter extends React.Component {
