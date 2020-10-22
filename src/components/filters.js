@@ -5,9 +5,9 @@ const ContainerForInputs = styled.div`
 display: flex;
 flex-direction: column;
 align-items: flex-start;
-border: 1px solid black;
+border: 2px dotted magenta;
 padding: 10px;
-height: 110vh;
+padding-bottom: 92vh
 `
 
 class Filter extends React.Component {

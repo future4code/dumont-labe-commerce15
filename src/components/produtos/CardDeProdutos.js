@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 
 const CardContainer = styled.div`
-  border: 2px solid magenta;
+  border: 2px dotted magenta;
   display: flex;
   flex-direction: column;
   
@@ -25,6 +25,12 @@ p {
 const BotaoCarrinho = styled.button`
     align-self: center;
     margin: 5px;
+    background-color: #541922;
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    
 
 `;
 

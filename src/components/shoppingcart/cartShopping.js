@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ShopCartItem from './cartShoppingItem'
 
 const CartContainer = styled.div`
-  border: 1px solid black;
+  border: 2px dotted magenta;
   padding: 8px;
 `;
 

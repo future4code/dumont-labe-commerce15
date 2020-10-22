@@ -67,7 +67,7 @@ class App extends React.Component {
 
   state = {
     FilterForMinumum: '',
-    FilterForMaximum: '',
+    FilterForMaximum: '100000',
     FilterForName: '',
     productsCart: []
   }

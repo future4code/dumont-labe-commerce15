@@ -3,7 +3,8 @@ import styled from "styled-components";
 import CardDeProdutos from '../produtos/CardDeProdutos.js'
 
 const ProdutosContainer = styled.div`
-    border: 1px solid magenta;
+    border: 3px dotted #F228C6;
+    padding: 4px;
 `;
 
 const ProdutosHeader = styled.div`
