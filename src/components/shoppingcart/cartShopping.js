@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ShopCartItem from './cartShoppingItem'
 
 const CartContainer = styled.div`
-  border: 1px solid black;
+  border: 2px dotted magenta;
   padding: 8px;
 `;
 
@@ -28,7 +28,7 @@ class ShopCart extends React.Component {
         <CartItemContainer>
 
         {this.props.productsCart.map((product) => {
-          return <ShopCartItem cartItem={product}/>
+          return <ShopCartItem cartItem={product} onRemoveProduct={this.props.onRemoveProduct}/>
         })}
 
         </CartItemContainer>

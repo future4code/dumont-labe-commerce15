@@ -8,13 +8,20 @@ gap: 4px;
 align-items: center;
 `
 
+const RemoveButton = styled.button `
+    margin: 5px;
+    background-color: #541922;
+    color: white;
+    font-weight: bold;
+`
+
 class ShopCartItem extends React.Component {
     render() {
       return (
         <ItemContainer>
           <p>{this.props.cartItem.quantity}x</p>
           <p>{this.props.cartItem.name}</p>
-          <button>Remover</button>
+          <RemoveButton onClick={() => this.props.onRemoveProduct(this.props.cartItem.id)}>Remover</RemoveButton>
         </ItemContainer>
       );
     }
