@@ -34,16 +34,11 @@ class Produtos extends React.Component{
               </label>
             </ProdutosHeader>
             <ProdutosTabela>
-              <CardDeProdutos />
-              <CardDeProdutos />
-              <CardDeProdutos />
-              <CardDeProdutos />
-              <CardDeProdutos />
-              <CardDeProdutos />
-              <CardDeProdutos />
-              <CardDeProdutos />
-              <CardDeProdutos />
-              <CardDeProdutos />
+              {this.props.products.map((product) => {
+                return <CardDeProdutos product={product} />;
+
+              })}
+              
             </ProdutosTabela>
         </ProdutosContainer>
         );
