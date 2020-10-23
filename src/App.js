@@ -70,18 +70,19 @@ class App extends React.Component {
     FilterForName: "",
     productsCart: [],
     listaDeProdutos: products,
+    sort: "crescente"
   };
 
-  componentDidUpdate(prevProps, prevState, snapshot){
+  componentDidUpdate(prevProps, prevState, snapshot) {
     if (
       prevState.FilterForName !== this.state.FilterForName ||
       prevState.FilterForMaximum !== this.state.FilterForMaximum ||
-      prevState.FilterForMinumum !== this.state.FilterForMinumum) {
+      prevState.FilterForMinumum !== this.state.FilterForMinumum,
+      prevState.sort !== this.state.sort
+    ) {
       this.getListaFiltrada();
-      console.log(this.state)
     }
   }
-
 
   onChangeFilterForMinimum = (event) => {
     this.setState({ FilterForMinumum: event.target.value });
@@ -96,25 +97,46 @@ class App extends React.Component {
   };
 
   getListaFiltrada = () => {
-      const produtosFiltrados = products
+    const produtosFiltrados = products
       .filter((product) => {
-        return product.name.includes(this.state.FilterForName);
+        if (this.state.FilterForName) {
+          return product.name.includes(this.state.FilterForName);
+        } else {
+          return true;
+        }
       })
+
       .filter((product) => {
-        return product.value < Number(this.state.FilterForMaximum);
+        if (this.state.FilterForMaximum) {
+          return product.value < Number(this.state.FilterForMaximum);
+        } else {
+          return true;
+        }
       })
+
       .filter((product) => {
-        return product.value > Number(this.state.FilterForMinumum);
-      });
-      
-      // .sort((a, b) => {
-      //   return this.state.sort === "crescente"
-      //     ? a.value - b.value
-      //     : b.value - a.value;
-      // });
-      
+        if (this.state.FilterForMinumum) {
+          return product.value > Number(this.state.FilterForMinumum);
+        } else {
+          return true;
+        }
+      })
+
+    //   .sort((a, b) => {
+    //   return this.state.sort === "crescente"
+    //     ? a.value - b.value
+    //     : b.value - a.value;
+    // });
+
     this.setState({ listaDeProdutos: produtosFiltrados });
   };
+
+      
+  };
+
+  //  onChangeOrdenar = (event) => {
+  //   this.setState({sort: event.target.value });
+  // };
 
   onAddProduct = (productId) => {
     const productInCart = this.state.productsCart.find(
@@ -161,9 +183,8 @@ class App extends React.Component {
       .filter((product) => product.quantity > 0);
 
     this.setState({ productsCart: newProductInCart });
-  };
+  }
 
-  
   render() {
     return (
       <AppContainer>
@@ -190,6 +211,7 @@ class App extends React.Component {
       </AppContainer>
     );
   }
-}
+    
+  
 
 export default App;
