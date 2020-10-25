@@ -3,6 +3,31 @@ import Filter from '././components/filters'
 import styled from 'styled-components';
 import Produtos from './components/produtos/Produtos.js';
 import ShopCart from './components/shoppingcart/cartShopping.js'
+import Logo from './components/img/72-512.png'
+
+const Header = styled.div`
+  display: flex;
+  font-family: monospace;
+  justify-content: space-between;
+  
+  
+
+
+  p{
+    margin-top: 80px;
+    
+   
+  }
+`
+
+
+const LogoTipo = styled.img`
+  width: 100px;
+  height: 100px;
+
+`
+
+
 
 
 const AppContainer = styled.div`
@@ -10,8 +35,11 @@ const AppContainer = styled.div`
     grid-template-columns: 1fr 3fr 1fr;
     gap: 10px;
     padding: 15px;
+    font-family: monospace;
   
 `;
+
+
 
 const products = [
   {
@@ -63,6 +91,7 @@ const products = [
   },
 ];
 
+
 class App extends React.Component {
   state = {
     FilterForMinumum: "",
@@ -70,16 +99,16 @@ class App extends React.Component {
     FilterForName: "",
     productsCart: [],
     listaDeProdutos: products,
-    sort: "crescente"
+    sort: "crescente",
   };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (
       prevState.FilterForName !== this.state.FilterForName ||
       prevState.FilterForMaximum !== this.state.FilterForMaximum ||
-      prevState.FilterForMinumum !== this.state.FilterForMinumum,
+      prevState.FilterForMinumum !== this.state.FilterForMinumum ||
       prevState.sort !== this.state.sort
-    ) {
+    ){
       this.getListaFiltrada();
     }
   }
@@ -97,7 +126,7 @@ class App extends React.Component {
   };
 
   getListaFiltrada = () => {
-    const produtosFiltrados = products
+    const produtosFiltrados = products       
       .filter((product) => {
         if (this.state.FilterForName) {
           return product.name.includes(this.state.FilterForName);
@@ -122,21 +151,19 @@ class App extends React.Component {
         }
       })
 
-    //   .sort((a, b) => {
-    //   return this.state.sort === "crescente"
-    //     ? a.value - b.value
-    //     : b.value - a.value;
-    // });
+      .sort((a, b) => {
+      return this.state.sort === "crescente"
+        ? a.value - b.value
+        : b.value - a.value;
+    });
 
     this.setState({ listaDeProdutos: produtosFiltrados });
   };
 
-      
-  };
 
-  //  onChangeOrdenar = (event) => {
-  //   this.setState({sort: event.target.value });
-  // };
+   onChangeOrdenar = (event) => {
+    this.setState({sort: event.target.value });
+  };
 
   onAddProduct = (productId) => {
     const productInCart = this.state.productsCart.find(
@@ -183,35 +210,48 @@ class App extends React.Component {
       .filter((product) => product.quantity > 0);
 
     this.setState({ productsCart: newProductInCart });
-  }
+  };
 
-  render() {
+  render(){
     return (
-      <AppContainer>
-        <Filter
-          FilterForMinumum={this.state.FilterForMinumum}
-          FilterForMaximum={this.state.FilterForMaximum}
-          FilterForName={this.state.FilterForName}
-          onChangeFilterForMinimum={this.onChangeFilterForMinimum}
-          onChangeFilterForMaximum={this.onChangeFilterForMaximum}
-          onChangeFilterForName={this.onChangeFilterForName}
-        />
-        <Produtos
-          products={this.state.listaDeProdutos}
-          atualizarProdutos={this.atualizaProdutos}
-          FilterForMinumum={this.state.FilterForMinumum}
-          FilterForMaximum={this.state.FilterForMaximum}
-          FilterForName={this.state.FilterForName}
-          onAddProduct={this.onAddProduct}
-        />
-        <ShopCart
-          productsCart={this.state.productsCart}
-          onRemoveProduct={this.onRemoveProduct}
-        />
-      </AppContainer>
+      <div>
+        <Header>
+          <LogoTipo img src={Logo}></LogoTipo>
+          
+            <h1> Astro-nu Shop</h1>
+            <p> A loja que te leva ao espaço!!!</p>
+          
+
+        </Header>
+
+        <AppContainer>
+          <Filter
+            FilterForMinumum={this.state.FilterForMinumum}
+            FilterForMaximum={this.state.FilterForMaximum}
+            FilterForName={this.state.FilterForName}
+            onChangeFilterForMinimum={this.onChangeFilterForMinimum}
+            onChangeFilterForMaximum={this.onChangeFilterForMaximum}
+            onChangeFilterForName={this.onChangeFilterForName}
+          />
+          <Produtos
+            products={this.state.listaDeProdutos}
+            atualizarProdutos={this.atualizaProdutos}
+            sort={this.state.sort}
+            onChangeOrdenar={this.onChangeOrdenar}
+            FilterForMinumum={this.state.FilterForMinumum}
+            FilterForMaximum={this.state.FilterForMaximum}
+            FilterForName={this.state.FilterForName}
+            onAddProduct={this.onAddProduct}
+          />
+          <ShopCart
+            productsCart={this.state.productsCart}
+            onRemoveProduct={this.onRemoveProduct}
+          />
+        </AppContainer>
+      </div>
     );
-  }
-    
+  };
+}  
   
 
 export default App;
